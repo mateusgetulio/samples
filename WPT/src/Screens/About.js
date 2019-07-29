@@ -15,7 +15,7 @@ import {
 } from "react-native";
 import { DrawerActions } from "react-navigation";
 import Icon from "react-native-vector-icons/FontAwesome";
-import commonStyles from "../CommonStyles";
+import commonStyles from "../commonStyles";
 import bg from "../../assets/images/bg.jpg";
 import "whatwg-fetch";
 import {

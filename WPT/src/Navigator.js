@@ -6,7 +6,7 @@ import App from "./Screens/App";
 import ViewSite from "./Screens/ViewSite";
 import About from "./Screens/About";
 
-import commonStyles from "./CommonStyles";
+import commonStyles from "./commonStyles";
 
 const MenuRoutes = {
   List: {

@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   StyleSheet
 } from "react-native";
-import commonStyles from "../CommonStyles";
+import commonStyles from "../commonStyles";
 import { showError } from "../../common";
 
 export default class AddSite extends Component {

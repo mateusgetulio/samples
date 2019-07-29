@@ -30,7 +30,7 @@ import ViewSite from "./ViewSite";
 import Progress from "./Progress";
 import "whatwg-fetch";
 import Site from "../Components/Site";
-import commonStyles from "../CommonStyles";
+import commonStyles from "../commonStyles";
 import bg from "../../assets/images/bg.jpg";
 
 export default class App extends Component {

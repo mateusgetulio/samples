@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { getPerformanceColor } from "../../common";
-import commonStyles from "../CommonStyles";
+import commonStyles from "../commonStyles";
 import Swipeable from "react-native-swipeable";
 
 export default props => {

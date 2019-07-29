@@ -11,7 +11,7 @@ import {
 import { DrawerItems } from "react-navigation";
 
 import Icon from "react-native-vector-icons/FontAwesome";
-import commonStyles from "../CommonStyles";
+import commonStyles from "../commonStyles";
 
 export default class Menu extends Component {
   render() {
