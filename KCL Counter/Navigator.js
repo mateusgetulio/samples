@@ -13,7 +13,7 @@ const MenuRoutes = {
     name: "Home",
     screen: props => <App {...props} />,
     navigationOptions: {
-      title: "test",
+      title: "Home",
       tabBarVisible: false
     }
   }

@@ -12,31 +12,23 @@ import {
   FlatList,
   Linking
 } from "react-native";
-
 import Orientation from "react-native-orientation-locker";
-
 import { DrawerActions } from "react-navigation";
-
 import axios from "axios";
-
-import { showError, showWarning, server, kclReportUrl } from "../../common";
-
 import AsyncStorage from "AsyncStorage";
-
 import Icon from "react-native-vector-icons/FontAwesome";
-
 import BottomNavigation, {
   FullTab
 } from "react-native-material-bottom-navigation";
 
-import SearchFood from "./searchFood";
-import CategoriesSelection from "./categoriesSelection";
-import History from "./history";
 
+import SearchFood from "./SearchFood";
+import CategoriesSelection from "./CategoriesSelection";
 import foodList from "../../foodList";
 import Food from "../components/Food";
 import commonStyles from "../../commonStyles";
 import bg from "../../assets/images/bg.jpg";
+import { showError, showWarning, server, kclReportUrl } from "../../common";
 
 userEmail = "";
 userName = "";
