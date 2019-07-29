@@ -1,0 +1,42 @@
+<% @pets.each_slice(2) do |petrow| %>
+  <div class="row">
+    <% petrow.each do |pet| %>
+      
+      <div class="span6 aligncenter pet-ficha">
+        <img class="max-img" src="img/ficha/<%= pet.id_familia.to_s %>/<%= pet.id.to_s %>.png" alt="" />
+        <br />
+        <h4><%= pet.raca %></h4>
+
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#<%= pet.raca.gsub(/\s+/, '') + '1' %>" data-toggle="tab">Resumo</a></li>
+            <li><a href="#<%= pet.raca.gsub(/\s+/, '') + '2' %>" data-toggle="tab">Origem</a></li>
+            <li><a href="#<%= pet.raca.gsub(/\s+/, '') + '3' %>" data-toggle="tab">Caracteristicas</a></li>
+            <li><a href="#<%= pet.raca.gsub(/\s+/, '') + '4' %>" data-toggle="tab">Temperamento</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="<%= pet.raca.gsub(/\s+/, '') + '1' %>">
+              <%=raw pet.resumo %>
+            </div>
+            <div class="tab-pane" id="<%= pet.raca.gsub(/\s+/, '') + '2' %>">
+              <p>
+                <%= pet.origem %>
+              </p>
+            </div>
+            <div class="tab-pane" id="<%= pet.raca.gsub(/\s+/, '') + '3' %>">
+              <p>
+                <%= pet.caracteristicas %>
+              </p>
+            </div>
+            <div class="tab-pane" id="<%= pet.raca.gsub(/\s+/, '') + '4' %>">
+              <p>
+                <%= pet.temperamento %>
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+<% end %> 

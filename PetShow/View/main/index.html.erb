@@ -1,0 +1,424 @@
+
+<% content_for :navbar do %>  
+  <nav class="pull-right nav-collapse collapse">
+    <ul id="menu-main" class="nav">
+      <li><a class="selected" href="index.html">Home</a></li>
+      <li><a href="servicos.html">Serviços</a></li>
+      <li><a href="ficha.html">Ficha do pet</a></li>
+      <li><a href="loja.html">A loja</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+  </nav>
+<% end %>
+
+<div id="header-wrapper" class="header-slider">
+  <header class="clearfix">
+    <div class="logo">
+      <img src="img/logo-image.png" alt="" />
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <div id="main-flexslider" class="flexslider">
+            <ul class="slides">
+              <li>
+                <p class="home-slide-content">
+                  <strong>Carinho</strong> e compromisso
+                </p>
+              </li>
+              <li>
+                <p class="home-slide-content">
+                  O melhor <strong>tratamento</strong>
+                </p>
+              </li>
+              <li>
+                <p class="home-slide-content">
+                  Conosco seu pet é <strong>vip</strong>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<section class="spacer green">
+  <div class="container">
+    <div class="row">
+      <div class="span6 alignright flyLeft">
+        <blockquote class="large">
+          Alguns remédios não vem em frascos, mas sim em 4 patas
+        </blockquote>
+      </div>
+      <div class="span6 aligncenter flyRight">
+        <i class="fa-paw icon-10x"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="section orange">
+  <div class="container">
+    <h4>Serviços</h4>
+    
+    <div class="row">
+      <div class="span3 animated-fast flyIn">
+        <div class="service-box">
+          <img src="img/icons/banho.png" alt="" />
+          <h2>Banho</h2>
+          <p>
+            O banho deve fazer parte da rotina de cuidados, ele ajuda a proteger o seu bichinho de bactérias além de deixá-lo limpinho e cheiroso.
+          </p>
+        </div>
+      </div>
+      <div class="span3 animated flyIn">
+        <div class="service-box">
+          <img src="img/icons/tosa.png" alt="" />
+          <h2>Tosa</h2>
+          <p>
+            A tosa não é um processo que serve apenas para deixar o seu pet mais bonito e, sim, algo que pode evitar acidentes e ajudar a manter a saúde do animal.
+          </p>
+        </div>
+      </div>
+      <div class="span3 animated-fast flyIn">
+        <div class="service-box">
+          <img src="img/icons/ornamentos.png" alt="" />
+          <h2>Venda de ornamentos</h2>
+          <p>
+            Através de ornamentos personalizados você pode deixar o seu pet mais charmoso e bonito.
+          </p>
+        </div>
+      </div>
+      <div class="span3 animated-slow flyIn">
+        <div class="service-box">
+          <img src="img/icons/alimentos.png" alt="" />
+          <h2>Venda de alimentos</h2>
+          <p>
+            Cuidar da alimentação do seu pet com uma ração balanceada é a maneira correta de retribuir todo carinho que esses bichinhos nos dão.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="spacer bg2">
+  <div class="container">
+    <div class="row">
+      <div class="span12 aligncenter flyLeft">
+        <blockquote class="large">
+          Na PetShow você encontra grande variedade de rações, produtos de higiene, utensílios e ornamentos de qualidade inquestionável
+        </blockquote>
+      </div>
+      <div class="span12 aligncenter flyRight">
+        <i class="icon-star icon-10x"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container clearfix">
+    <h4>Ficha - Informações e curiosidades sobre os pets</h4>
+    <div class="row">
+      <div id="filters" class="span12">
+        <ul class="clearfix">
+          <li>
+            <a href="#" data-filter="*" class="active">
+              <h5>Todos</h5>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-filter=".caes">
+              <h5>Cães</h5>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-filter=".gatos">
+              <h5>Gatos</h5>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-filter=".aves">
+              <h5>Aves</h5>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-filter=".outros">
+              <h5>Outros</h5>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span12">
+        <div id="portfolio-wrap">
+          <div class="portfolio-item grid caes">
+            <div class="portfolio">
+              <a href="img/apresentacao/chowchowdetalhes.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+                <img src="img/apresentacao/chowchow.png" alt="" />
+                <div class="portfolio-overlay">
+                  <div class="thumb-info">
+                    <h5>Chow Chow</h5>
+                    <i class="icon-plus icon-2x"></i>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-item grid caes">
+            <div class="portfolio">
+              <a href="img/apresentacao/boxerdetalhes.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+                <img src="img/apresentacao/boxer.png" alt="" />
+                <div class="portfolio-overlay">
+                  <div class="thumb-info">
+                    <h5>Boxer</h5>
+                    <i class="icon-plus icon-2x"></i>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-item grid caes">
+            <div class="portfolio">
+              <a href="img/apresentacao/beagledetalhes.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+                <img src="img/apresentacao/beagle.png" alt="" />
+                <div class="portfolio-overlay">
+                  <div class="thumb-info">
+                    <h5>Beagle</h5>
+                    <i class="icon-plus icon-2x"></i>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-item grid gatos">
+            <div class="portfolio">
+              <a href="img/apresentacao/abissiniodetalhes.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+                <img src="img/apresentacao/abissinio.png" alt="" />
+                <div class="portfolio-overlay">
+                  <div class="thumb-info">
+                    <h5>Abissínio</h5>
+                    <i class="icon-plus icon-2x"></i>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-item grid gatos">
+            <div class="portfolio">
+              <a href="img/apresentacao/angoradetalhes.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+                <img src="img/apresentacao/angora.png" alt="" />
+                <div class="portfolio-overlay">
+                  <div class="thumb-info">
+                    <h5>Angorá</h5>
+                    <i class="icon-plus icon-2x"></i>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-item grid gatos">
+            <div class="portfolio">
+              <a href="img/apresentacao/mainecoondetalhes.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+                <img src="img/apresentacao/mainecoon.png" alt="" />
+                <div class="portfolio-overlay">
+                  <div class="thumb-info">
+                    <h5>Maine Coon</h5>
+                    <i class="icon-plus icon-2x"></i>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-item grid aves">
+            <div class="portfolio">
+              <a href="img/apresentacao/calopsitadetalhes.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+                <img src="img/apresentacao/calopsita.png" alt="" />
+                <div class="portfolio-overlay">
+                  <div class="thumb-info">
+                    <h5>Calopsita</h5>
+                    <i class="icon-plus icon-2x"></i>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-item grid aves">
+            <div class="portfolio">
+              <a href="img/apresentacao/periquitodetalhes.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+                <img src="img/apresentacao/periquito.png" alt="" />
+                <div class="portfolio-overlay">
+                  <div class="thumb-info">
+                    <h5>Periquito</h5>
+                    <i class="icon-plus icon-2x"></i>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-item grid outros">
+            <div class="portfolio">
+              <a href="img/apresentacao/porquinhodaindiadetalhes.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+                <img src="img/apresentacao/porquinhodaindia.png" alt="" />
+                <div class="portfolio-overlay">
+                  <div class="thumb-info">
+                    <h5>Porquinho-da-índia</h5>
+                    <i class="icon-plus icon-2x"></i>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-item grid outros">
+            <div class="portfolio">
+              <a href="img/apresentacao/coelhodetalhes.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+                <img src="img/apresentacao/coelho.png" alt="" />
+                <div class="portfolio-overlay">
+                  <div class="thumb-info">
+                    <h5>Coelho</h5>
+                    <i class="icon-plus icon-2x"></i>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="aligncenter">
+    <a href="ficha" class="btn btn-large btn-theme">Ver mais</a>
+  </div>
+</section>
+
+<section class="spacer bg3">
+  <div class="container">
+    <div class="row">
+      <div class="span12 aligncenter flyLeft">
+        <blockquote class="large">
+          Conosco você terá à sua disposição o atendimento personalizado de profissionais que tratarão, com respeito e dedicação, você e seu animal de estimação
+        </blockquote>
+      </div>
+      <div class="span12 aligncenter flyRight">
+        <i class="icon-star icon-10x"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="blog" class="section">
+  <div class="container">
+    <h4>Nossa loja</h4>
+ 
+    <div class="row">
+      <div class="span3">
+        <div class="home-post">
+          <div class="post-image">
+            <img class="max-img" src="img/blog/img1.jpg" alt="" />
+          </div>
+          <div class="entry-content">
+            <h5><strong><a href="servicos">Estrutura de ponta</a></strong></h5>
+            <p>
+              Contamos com o que há de mais avançando para melhor lhe atender &hellip;
+            </p>
+          </div>
+          <br />
+        </div>
+      </div>
+      <div class="span3">
+        <div class="home-post">
+          <div class="post-image">
+            <img class="max-img" src="img/blog/img2.jpg" alt="" />
+          </div>
+          <div class="entry-content">
+            <h5><strong><a href="servicos">Profissionais qualificados</a></strong></h5>
+            <p>
+              Nosso pessoal é qualificado, treinado e focado no bem-estar do seu bichinho &hellip;
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="span3">
+        <div class="home-post">
+          <div class="post-image">
+            <img class="max-img" src="img/blog/img3.jpg" alt="" />
+          </div>
+          <div class="entry-content">
+            <h5><strong><a href="servicos">Ótima localização</a></strong></h5>
+            <p>
+              Contamos com uma ótima localização visando o seu maior conforto &hellip;
+            </p>
+          </div>
+          
+        </div>
+      </div>
+      <div class="span3">
+        <div class="home-post">
+          <div class="post-image">
+            <img class="max-img" src="img/blog/img4.jpg" alt="" />
+          </div>
+          <div class="entry-content">
+            <h5><strong><a href="servicos">Transporte</a></strong></h5>
+            <p>
+              Não tem como trazer seu pet? Não se preocupe, nós o buscamos e levamos de volta para você &hellip;
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="blankdivider30"></div>
+    <div class="aligncenter">
+      <a href="servicos" class="btn btn-large btn-theme">Ver mais</a>
+    </div>
+  </div>
+</section>
+
+
+<section id="contact" class="section green">
+  <div class="container">
+    <h4>Fale conosco</h4>
+    <p>
+      Entre em contato com a gente. Teremos o maior prazer em responder qualquer dúvida que você tenha sobre nós e nossos serviços.
+    </p>
+    <div class="blankdivider30">
+    </div>
+    <div class="row">
+      <div class="span12">
+        <div class="cform" id="contact-form">
+          <div id="sendmessage">Sua mensagem foi enviada!</div>
+          <div id="errormessage"></div>
+          <form action="" method="post" role="form" class="contactForm">
+            <div class="row">
+              <div class="span6">
+                <div class="field your-name form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Nome" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <div class="validation"></div>
+                </div>
+                <div class="field your-email form-group">
+                  <input type="text" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid email" />
+                  <div class="validation"></div>
+                </div>
+                <div class="field subject form-group">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                  <div class="validation"></div>
+                </div>
+              </div>
+              <div class="span6">
+                <div class="field message form-group">
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Mensagem"></textarea>
+                  <div class="validation"></div>
+                </div>
+                <input type="submit" value="Enviar" class="btn btn-theme pull-left">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  

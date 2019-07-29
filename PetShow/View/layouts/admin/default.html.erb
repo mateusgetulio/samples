@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PetShow - Painel Administrativo</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Styles -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/themes/redmond/jquery-ui.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />     
+
+    <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/admin.css" rel="stylesheet">
+    <link href="/css/dashboard-style.css" rel="stylesheet">
+
+    <%= yield :css %>
+  </head>
+
+  <body>
+    
+    <div id="throbber" style="display:none; min-height:120px;"></div>
+      <div id="noty-holder"></div>
+      <div id="wrapper">
+          <!-- Navigation -->
+          <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                   <!-- Branding Image -->
+                  <a class="navbar-brand" href="admin">
+                      <a href="/admin" class="navbar-brand"><img src="/img/logo-white.png" /></a>
+                  </a>
+              </div>
+              
+              <div class="apresentacao">
+                Bem-vindo <strong>   <%= @current_user.nome %> </strong> 
+                <% if logged_in? %>
+                  <%= link_to "Sair", logout_path, method: :delete %>
+                <% end %>
+              </div>
+              
+
+
+
+              <div class="nav-side-menu">
+                <div class="menu-list">
+        
+                    <ul id="menu-content" class="menu-content collapse out">
+                        
+                        <li>
+                          <a href="/admin/pets"><i class="fa fa-fw fa-paw"></i> Pets</a>
+                        </li>  
+                        <ul class="sub-menu">
+                          <li> <%= link_to "Inserir Pet", new_pet_path %> </li>
+                        </ul>
+
+
+                        <li>
+                          <a href="/admin/usuarios"><i class="fa fa-fw fa-users"></i> Usuários</a>
+                        </li>  
+                        <ul class="sub-menu">
+                          <li><%= link_to "Inserir Usuário", new_usuario_path %> </li></li>
+                        </ul>
+
+                    </ul>
+               </div>
+            </div>
+          </nav>
+
+          <div id="page-wrapper">
+              <div class="container-fluid">
+                  <%= render '/layouts/admin/messages' %>
+                  <%= yield %>
+              </div>
+              <!-- /.container-fluid -->
+          </div>
+          <!-- /#page-wrapper -->
+      </div><!-- /#wrapper -->
+
+    <script crossorigin="anonymous" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>     
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+    <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+
+    <%= yield :scripts %>
+  </body>
+</html>

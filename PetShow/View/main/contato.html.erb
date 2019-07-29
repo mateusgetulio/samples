@@ -1,0 +1,90 @@
+<% content_for :navbar do %>  
+  <nav class="pull-right nav-collapse collapse">
+    <ul id="menu-main" class="nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="servicos.html">Serviços</a></li>
+      <li><a href="ficha.html">Ficha do pet</a></li>
+      <li><a href="loja.html">A loja</a></li>
+      <li><a class="selected" href="contato.html">Contato</a></li>
+    </ul>
+  </nav>
+<% end %>
+  
+<section class="spacer green">
+  <div class="container">
+    <div class="row">
+      <div class="span12 aligncenter flyUp">
+        <h2 class="pagetitle">Fale conosco</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="maincontent" class="inner">
+  <div class="container">     
+    <div class="row">
+      <div class="span5">
+        
+        <img class="max-img" src="img/blog/img3.jpg" alt="" />
+      </div>
+      <div class="span7">
+        <h2>DADOS DE CONTATO</h2>
+        
+        <p>
+          Endereço: Avenida João Pinheiro da Rocha, nº: 13 <br />
+          Bairro: Dom Bosco <br />
+          Rio de Janeiro - RJ  <br />
+          Telefone: (21) 3000-0000<br />
+          Email: portalpetshowrj@gmail.com<br />
+        </p>
+      </div>
+    </div>
+
+    <br />
+    <div class="aligncenter">
+      <strong> Se preferir nos envie sua mensagem através do formulário abaixo: </strong>
+    </div>
+
+  </div>
+
+    
+</section>
+
+<section id="contact" class="section green">
+  <div class="container">
+    
+    <div class="row">
+      <div class="span12">
+        <div class="cform" id="contact-form">
+          <div id="sendmessage">Sua mensagem foi enviada!</div>
+          <div id="errormessage"></div>
+          <form action="" method="post" role="form" class="contactForm">
+            <div class="row">
+              <div class="span6">
+                <div class="field your-name form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Nome" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <div class="validation"></div>
+                </div>
+                <div class="field your-email form-group">
+                  <input type="text" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid email" />
+                  <div class="validation"></div>
+                </div>
+                <div class="field subject form-group">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                  <div class="validation"></div>
+                </div>
+              </div>
+              <div class="span6">
+                <div class="field message form-group">
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Mensagem"></textarea>
+                  <div class="validation"></div>
+                </div>
+                <input type="submit" value="Enviar" class="btn btn-theme pull-left">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

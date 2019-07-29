@@ -1,0 +1,111 @@
+<% content_for :navbar do %>  
+  <nav class="pull-right nav-collapse collapse">
+    <ul id="menu-main" class="nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="servicos.html">Serviços</a></li>
+      <li><a class="selected" href="ficha.html">Ficha do pet</a></li>
+      <li><a href="loja.html">A loja</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+  </nav>
+<% end %>
+
+<div class="oculto loader overlay"> <i id="loadspinner" class="fa fa-spinner fa-spin"> </i></div>
+
+
+<section class="spacer green">
+  <div class="container">
+    <div class="row">
+      <div class="span12 aligncenter flyUp">
+        <h2 class="pagetitle">Ficha</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+   
+  
+<section id="maincontent" class="inner">
+  <div class="container">
+
+    <div class="row aligncenter">
+      Nessa seção você encontrará informações técnicas e curiosidades a respeito de uma grande variedade de pets.
+      <br />
+      Use essa informação para estreitar laços com seu bichinho ou para escolher seu pet de acordo com sua personalidade antes de uma adoção ou compra.
+      <br />
+      <br />
+      <strong>Utilize os controles abaixo para encontrar o animal desejado:</strong>
+    </div>
+    
+    <div class="row aligncenter">
+      <div class="span4 offset1">
+        Família: 
+        <select id="select-animal" class="selectpicker">
+          <option value="-1">Todos</option>
+          <option value="1">Cães</option>
+          <option value="2">Gatos</option>
+          <option value="3">Aves</option>
+          <option value="4">Outros</option>
+        </select>
+      </div>
+
+      <div class="span4">
+        Raça:
+        <input type="text" class="pesquisa" placeholder="Insira a raça a ser pesquisada" style="width: 300px; float: right;">
+      </div>
+    </div>
+    
+    <div id="pet-exhibition">
+      <% @pets.each_slice(2) do |petrow| %>
+        <div class="row">
+          <% petrow.each do |pet| %>
+            
+            <div class="span6 aligncenter pet-ficha">
+              <img class="max-img" src="img/ficha/<%= pet.id_familia.to_s %>/<%= pet.id.to_s %>.png" alt="" />
+              <br />
+              <h4><%= pet.raca %></h4>
+
+              <div class="tabbable">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#<%= pet.raca.gsub(/\s+/, '') + '1' %>" data-toggle="tab">Resumo</a></li>
+                  <li><a href="#<%= pet.raca.gsub(/\s+/, '') + '2' %>" data-toggle="tab">Origem</a></li>
+                  <li><a href="#<%= pet.raca.gsub(/\s+/, '') + '3' %>" data-toggle="tab">Caracteristicas</a></li>
+                  <li><a href="#<%= pet.raca.gsub(/\s+/, '') + '4' %>" data-toggle="tab">Temperamento</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane active" id="<%= pet.raca.gsub(/\s+/, '') + '1' %>">
+                    <%=raw pet.resumo %>
+                  </div>
+                  <div class="tab-pane" id="<%= pet.raca.gsub(/\s+/, '') + '2' %>">
+                    <p>
+                      <%= pet.origem %>
+                    </p>
+                  </div>
+                  <div class="tab-pane" id="<%= pet.raca.gsub(/\s+/, '') + '3' %>">
+                    <p>
+                      <%= pet.caracteristicas %>
+                    </p>
+                  </div>
+                  <div class="tab-pane" id="<%= pet.raca.gsub(/\s+/, '') + '4' %>">
+                    <p>
+                      <%= pet.temperamento %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          <% end %>
+        </div>
+      
+      <% end %> 
+    </div>
+
+      
+  </div>
+
+</section>
+
+<% content_for :scripts do %> 
+  <script type="text/javascript" src="js/pesquisa-pet.js">  </script>
+<% end %>

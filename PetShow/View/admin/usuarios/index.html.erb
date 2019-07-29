@@ -1,0 +1,20 @@
+<h1 class="titulo-adm">Cadastro de Usuários</h1> 
+
+<div>
+  <br />
+  <% @usuarios.each do |usuario| %>
+    <div class="row">
+      <div class="text-left well col-sm-4">
+        <h3><%= usuario.nome %> </h3> 
+        <div class="col-sm-8">
+          <p>Email: <%= usuario.email %></p>
+          <%= link_to "Editar", edit_usuario_path(usuario), class: "btn btn-primary" %>
+
+          <%= link_to "Excluir", usuario_path(usuario), method: :delete, data: { confirm: "Deseja realmente excluir esse usuário?" },  class: "btn btn-danger" %>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+
+</div>
