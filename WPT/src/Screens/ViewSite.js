@@ -29,6 +29,7 @@ import {
 } from "../../common";
 
 export default class ViewSite extends Component {
+  // Initializes the state with the data coming from the last screen
   initialState = {
     site: this.props.navigation.getParam("site"),
     loadTime: this.props.navigation.getParam("loadTime") || "0",
@@ -45,22 +46,29 @@ export default class ViewSite extends Component {
   state = { ...this.initialState };
 
   componentDidMount() {
+    // If the website has never been fetched then it triggers 
+    // the perfomance measure event, otherwise it only displays
+    // the data that's already there
     this.state.score == 0 && this.loadSite();
+    // Handles the back key press
     this.backHandler = BackHandler.addEventListener("hardwareBackPress", () => {
       this.props.navigation.navigate("App");
       return true;
     });
   }
 
+  // Saves the data fetched to the local storage
   saveToStorage = async () => {
     try {
+      // Find the place data needs to be saved
       const value = await AsyncStorage.getItem("sites");
       if (value !== null) {
         let sites = JSON.parse(value) || [];
+        // Data treatment, if there's data in the storage already, 
+        // it only updates it, otherwise data will be put for
+        // the first time
         sites.forEach(element => {
-          if (
-            this.props.navigation.getParam("site") == element.site.toLowerCase()
-          ) {
+          if (this.props.navigation.getParam("site") == element.site.toLowerCase()) {
             element.site = this.props.navigation.getParam("site");
             element.loadTime = this.state.loadTime;
             element.firstByte = this.state.firstByte;
@@ -81,6 +89,7 @@ export default class ViewSite extends Component {
           }
         });
 
+        // Pushes the data to the storage
         await AsyncStorage.setItem("sites", JSON.stringify(sites));
       }
     } catch (e) {
@@ -92,7 +101,9 @@ export default class ViewSite extends Component {
     this.backHandler.remove();
   }
 
+  // Load website method
   loadSite = async () => {
+    // Checks if the phone has a working internet connection
     await NetInfo.getConnectionInfo().then(connectionInfo => {
       this.setState({
         connected: connectionInfo.type != "none" ? true : false
@@ -102,9 +113,11 @@ export default class ViewSite extends Component {
     if (this.state.connected == false) {
       showError("Your phone doesn't seem to be connected to the internet");
     } else {
+      // Triggers the device refreshing page
       this.setState({ refreshing: true });
       let statusCode = 100;
 
+      // Call the API to get the perfomance test started
       const response = await fetch(
         `${server}/runtest.php?url=${this.state.site.replace(
           /^(\/\/|^.*?:(\/\/)?(www.)?)|(www.)/,
@@ -113,14 +126,22 @@ export default class ViewSite extends Component {
       );
       const json = await response.json();
 
+      // Get the URL in which the API will dump the perfomance data
       let url = json.data.jsonUrl;
 
+
+      // Awaits the API call end
       while (statusCode < 199) {
+        // Once the API call ends, fetch the data
         const newResponse = await fetch(url);
         const newJson = await newResponse.json();
+        // Obtain the status from the API call
         statusCode = newJson.statusCode;
 
+
+        // Tests for success
         if (statusCode == 200) {
+          // Prepares the state update
           newState = {
             site: this.state.site,
             loadTime: newJson.data.median.firstView.fullyLoaded,
@@ -128,69 +149,30 @@ export default class ViewSite extends Component {
             startRender: newJson.data.median.firstView.firstImagePaint,
             requests: newJson.data.median.firstView.requestsFull,
             bytesIn: newJson.data.median.firstView.bytesIn,
+            // Calculates the CDN score
             cdnSystem: getCdnLevel(newJson.data.median.firstView.score_cdn),
+            // Calculates the overall score
             score: getScore(
               newJson.data.median.firstView.fullyLoaded,
               newJson.data.median.firstView.requests[1].download_start,
               newJson.data.median.firstView.bytesIn,
               newJson.data.median.firstView.score_cdn
             ),
+            // Set the refresh page as false
             refreshing: false,
             connected: false
           };
+          
           if (this.state.refreshing) {
+            // Update the state
             this.setState({ ...newState, refreshing: false, connected: false });
+            // Save the new data to the local storage
             this.saveToStorage();
           }
         }
       }
     }
   };
-
-  /*loadSite = async () => {
-    this.setState({ refreshing: true });
-    let statusCode = 100;
-
-    const response = await fetch(
-      `${server}/runtest.php?url=${this.state.site.replace(
-        /^(\/\/|^.*?:(\/\/)?(www.)?)|(www.)/,
-        ""
-      )}&k=A.1b0c60ef9d8c0fb76b3f4573bae91c32&f=json&fvonly=1`
-    );
-    const json = await response.json();
-
-    let url = json.data.jsonUrl;
-
-    while (statusCode < 199) {
-      const newResponse = await fetch(url);
-      const newJson = await newResponse.json();
-      statusCode = newJson.statusCode;
-
-      if (statusCode == 200) {
-        newState = {
-          site: this.state.site,
-          loadTime: newJson.data.median.firstView.fullyLoaded,
-          firstByte: newJson.data.median.firstView.requests[1].download_start,
-          startRender: newJson.data.median.firstView.firstImagePaint,
-          requests: newJson.data.median.firstView.requestsFull,
-          bytesIn: newJson.data.median.firstView.bytesIn,
-          cdnSystem: getCdnLevel(newJson.data.median.firstView.score_cdn),
-          score: getScore(
-            newJson.data.median.firstView.fullyLoaded,
-            newJson.data.median.firstView.requests[1].download_start,
-            newJson.data.median.firstView.bytesIn,
-            newJson.data.median.firstView.score_cdn
-          ),
-          refreshing: false,
-          connected: false
-        };
-        if (this.state.refreshing) {
-          this.setState({ ...newState, refreshing: false, connected: false });
-          this.saveToStorage();
-        }
-      }
-    }
-  };*/
 
   render() {
     return (
@@ -276,6 +258,7 @@ export default class ViewSite extends Component {
   }
 }
 
+// View style
 const styles = StyleSheet.create({
   container: {
     flex: 1

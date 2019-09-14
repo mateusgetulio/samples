@@ -13,7 +13,9 @@ import {
 import Icon from "react-native-vector-icons/FontAwesome";
 import commonStyles from "../../commonStyles";
 
+// Food component
 export default props => {
+  // Checks if food isn't being filtered
   if (props.visible == false) {
     return false;
   } else {
@@ -45,6 +47,7 @@ export default props => {
   }
 };
 
+// Component style
 const styles = StyleSheet.create({
   titleCard: {
     fontFamily: commonStyles.fontFamily,

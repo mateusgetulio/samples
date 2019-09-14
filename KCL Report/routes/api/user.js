@@ -4,14 +4,19 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
-
 const User = require("../../models/User");
-
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
 User.meth;
 
+
+/*** 
+  Method: GET
+  Restricted: Yes  
+  Endpoint: current
+  Returns: The authenticated user data
+***/
 router.get(
   "/current",
   passport.authenticate("jwt", { session: false }),
@@ -24,6 +29,13 @@ router.get(
   }
 );
 
+
+/*** 
+  Method: POST
+  Restricted: No
+  Endpoint: register  
+  Returns: The new user is logged and gets a token
+***/
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
 
@@ -57,6 +69,14 @@ router.post("/register", (req, res) => {
   });
 });
 
+
+/*** 
+  Method: POST
+  Restricted: No
+  Endpoint: year
+  Parameter: year - The year that needs to be retrieved
+  Returns: The logged user token
+***/
 router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
 

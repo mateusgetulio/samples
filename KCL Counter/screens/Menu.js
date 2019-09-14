@@ -14,18 +14,24 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import commonStyles from "../../commonStyles";
 import { server } from "../../common";
 
+// Initializes the data that is displayed in the menu
 userEmail = "";
 userName = "";
 
 export default class Menu extends Component {
+  // Logout method
   logout = async () => {
+    // Token deletion
     delete axios.defaults.headers.common["Authorization"];
+    // Cleares the store
     AsyncStorage.removeItem("userData");
     await AsyncStorage.clear();
+    // Navigates to the login page
     this.props.navigation.navigate("Loading");
   };
 
   componentDidMount = async () => {
+    // Get the logged user data
     await axios.get(`${server}/user/current`).then(res => {
       userEmail = res.data.email;
       userName = res.data.name;
@@ -62,6 +68,8 @@ export default class Menu extends Component {
   }
 }
 
+
+// View style
 const styles = StyleSheet.create({
   header: {
     borderBottomWidth: 1,

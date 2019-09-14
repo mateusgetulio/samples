@@ -5,8 +5,10 @@ const User = mongoose.model("users");
 const keys = require("../config/keys");
 const passport = require("passport");
 const path = require("path");
-
 const opts = {};
+
+// Passport implementation for the API authentication
+
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = keys.secretOrKey;
 

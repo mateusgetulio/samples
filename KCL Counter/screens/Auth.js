@@ -16,6 +16,7 @@ import commonStyles from "../../commonStyles";
 import backgroundImage from "../../assets/images/login.jpg";
 
 export default class Auth extends Component {
+  // Initializes the state
   state = {
     stageNew: false,
     name: "",
@@ -25,26 +26,35 @@ export default class Auth extends Component {
   };
 
   componentDidMount() {
+    // Locks portrait mode
     Orientation.lockToPortrait();
   }
 
+  // Signin method
   signin = async () => {
+    // Sends the login info, the password has been already encrypted
     try {
       const res = await axios.post(`${server}/user/login`, {
         email: this.state.email.toLowerCase(),
         password: this.state.password
       });
 
+      // Stores the user token
       axios.defaults.headers.common["Authorization"] = res.data.token;
+      // Stores the user info (email, name)
       AsyncStorage.setItem("userData", JSON.stringify(res.data));
+      // Navigates home
       this.props.navigation.navigate("Home", res.data);
     } catch (err) {
+      // Login failed
       Alert.alert("Login attempt failed", "User and/or password incorrect!");
       console.log(err);
     }
   };
 
+  // Signup method
   signup = async () => {
+    // Registers the user
     try {
       await axios.post(`${server}/user/register`, {
         name: this.state.name,
@@ -53,6 +63,7 @@ export default class Auth extends Component {
         password2: this.state.confirmPassword
       });
 
+      // After the user gets inserted, the app navigates to the login page
       Alert.alert("Sucess", "User added, please proceed to the login :)");
       this.setState({ stageNew: false });
     } catch (err) {
@@ -60,6 +71,7 @@ export default class Auth extends Component {
     }
   };
 
+  // Checks which page to render
   signinOrSignup = () => {
     if (this.state.stageNew) {
       this.signup();
@@ -69,6 +81,7 @@ export default class Auth extends Component {
   };
 
   render() {
+    // Validates both the login and the register data
     const validations = [];
 
     validations.push(this.state.email && this.state.email.includes("@"));
@@ -159,6 +172,7 @@ export default class Auth extends Component {
   }
 }
 
+// View style
 const styles = StyleSheet.create({
   background: {
     flex: 1,

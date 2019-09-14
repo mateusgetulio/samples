@@ -17,13 +17,16 @@ export default class AddSite extends Component {
     this.state = this.getInitialState();
   }
 
+  // Initializes the state
   getInitialState = () => {
     return {
       site: ""
     };
   };
 
+  // Save method
   save = () => {
+    // Validates to check if the input corresponds to a website
     if (
       !this.state.site.trim() ||
       !/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(
@@ -34,6 +37,8 @@ export default class AddSite extends Component {
       return;
     }
 
+
+    // Pass the data along to be saved
     const data = { ...this.state };
     this.props.onSave(data);
   };
@@ -73,6 +78,7 @@ export default class AddSite extends Component {
   }
 }
 
+// View style
 var styles = StyleSheet.create({
   container: {
     backgroundColor: "white",

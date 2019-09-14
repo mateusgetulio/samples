@@ -1,13 +1,12 @@
 import React from "react";
 import { createSwitchNavigator, createDrawerNavigator } from "react-navigation";
-
 import AuthOrApp from "./screens/AuthOrApp";
 import Menu from "./screens/Menu";
 import Auth from "./screens/Auth";
 import App from "./screens/App";
-
 import commonStyles from "../commonStyles";
 
+// App routes
 const MenuRoutes = {
   Home: {
     name: "Home",
@@ -19,6 +18,7 @@ const MenuRoutes = {
   }
 };
 
+// Menu setup
 const MenuConfig = {
   initialRouteName: "Home",
   contentComponent: Menu,
@@ -35,8 +35,10 @@ const MenuConfig = {
   }
 };
 
+// Creates the navigator
 const MenuNavigator = createDrawerNavigator(MenuRoutes, MenuConfig);
 
+// Registers the routes
 const MainRoutes = {
   Loading: {
     name: "Loading",
@@ -52,7 +54,9 @@ const MainRoutes = {
   }
 };
 
+// Create the switch and sets the initial route
 const MainNavigator = createSwitchNavigator(MainRoutes, {
   initialRouteName: "Loading"
 });
+
 export default MainNavigator;

@@ -16,14 +16,15 @@ export default class SearchFood extends Component {
     this.state = this.getInitialState();
   }
 
+  // Initializes the state
   getInitialState = () => {
     return {
       food: ""
     };
   };
 
-  search = () => {
-    console.log("aquin");
+  // Search method comes with the props
+  search = () => {    
     this.props.onSearch(this.state.food);
   };
 
@@ -68,6 +69,7 @@ export default class SearchFood extends Component {
   }
 }
 
+// View style
 var styles = StyleSheet.create({
   container: {
     backgroundColor: "white",

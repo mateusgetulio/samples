@@ -12,6 +12,8 @@ import commonStyles from "../commonStyles";
 import Swipeable from "react-native-swipeable";
 
 export default props => {
+  
+  // Swipe left content
   const leftContent = (
     <View style={styles.exclude}>
       <Icon name="trash" size={22} color="#FFF" />
@@ -19,6 +21,8 @@ export default props => {
     </View>
   );
 
+
+  // Swipe right content
   const rightContent = [
     <TouchableOpacity
       style={[
@@ -31,6 +35,7 @@ export default props => {
     </TouchableOpacity>
   ];
 
+  // Navigate to the website perfomance details
   const ViewSite = props => {
     props.navigation.navigate("ViewSite", { ...props });
   };
@@ -71,6 +76,7 @@ export default props => {
   );
 };
 
+// View style
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 10,

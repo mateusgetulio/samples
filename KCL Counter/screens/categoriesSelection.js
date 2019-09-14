@@ -10,9 +10,10 @@ import {
   StyleSheet
 } from "react-native";
 import { CheckBox } from "react-native-elements";
-
 import commonStyles from "../../commonStyles";
 
+// List of categories, this is going to be fetched from
+// an API call in next versions
 categories = [
   "Dessert",
   "Biscuit",
@@ -35,6 +36,7 @@ export default class CategoriesSelection extends Component {
     this.state = this.getInitialState();
   }
 
+  // Initializes the state
   getInitialState = () => {
     categories.sort();
     return {
@@ -43,10 +45,13 @@ export default class CategoriesSelection extends Component {
     };
   };
 
+  // Process the categories
   processCategories = () => {
     this.props.onSelectCategories(this.state.selection);
   };
 
+
+  // Allows multi selection
   multiSelect = () => {
     this.state.selection.length > 0
       ? this.setState({ selection: [], selectionText: "Select all" })
@@ -56,20 +61,25 @@ export default class CategoriesSelection extends Component {
         });
   };
 
+  // Checkboxes change event
   handleCheckChange = category => {
     var index = this.state.selection.indexOf(category);
     newSelection = this.state.selection;
 
+    // Adds or removes the item from the selection
+    // list depending on if it's already there or not
     if (index > -1) {
       newSelection.splice(index, 1);
     } else {
       newSelection.push(category);
     }
 
+    // Treats the right text to render
     this.state.selection.length > 0
       ? (selectionText = "Clear")
       : (selectionText = "Select all");
 
+    // Updates the state
     this.setState({ selection: newSelection, selectionText: selectionText });
   };
 
@@ -119,6 +129,7 @@ export default class CategoriesSelection extends Component {
   }
 }
 
+// View style
 var styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
