@@ -4,17 +4,17 @@ const isEmpty = require('./is-empty');
 module.exports = function validateLoginInput(data) {
   let errors = {};
 
-  // Sets the email as an empty string if it's null
+  // Set the email as an empty string if it's null
   data.email = !isEmpty(data.email) ? data.email : '';
-  // Sets the pass as an empty string if it's null
+  // Set the pass as an empty string if it's null
   data.password = !isEmpty(data.password) ? data.password : '';
 
-  // Checks the email format
+  // Check the email format
   if (!Validator.isEmail(data.email)) {
     errors.email = 'Email is invalid';
   }
 
-  // Checks if the email was informed
+  // Check if the email was informed
   if (Validator.isEmpty(data.email)) {
     errors.email = 'Email field is required';
   }

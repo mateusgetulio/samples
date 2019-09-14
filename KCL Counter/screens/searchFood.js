@@ -16,7 +16,7 @@ export default class SearchFood extends Component {
     this.state = this.getInitialState();
   }
 
-  // Initializes the state
+  // Initialize the state
   getInitialState = () => {
     return {
       food: ""

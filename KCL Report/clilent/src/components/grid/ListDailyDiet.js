@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class ListDailyDiet extends Component {
   
-  // Prepares the list of food iterating through the data
+  // Prepare the list of food iterating through the data
   getFoodList = foods => {
     let result = [];
 

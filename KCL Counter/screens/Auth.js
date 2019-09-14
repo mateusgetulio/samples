@@ -16,7 +16,7 @@ import commonStyles from "../../commonStyles";
 import backgroundImage from "../../assets/images/login.jpg";
 
 export default class Auth extends Component {
-  // Initializes the state
+  // Initialize the state
   state = {
     stageNew: false,
     name: "",
@@ -26,24 +26,24 @@ export default class Auth extends Component {
   };
 
   componentDidMount() {
-    // Locks portrait mode
+    // Lock to portrait mode
     Orientation.lockToPortrait();
   }
 
   // Signin method
   signin = async () => {
-    // Sends the login info, the password has been already encrypted
+    // Send the login info, the password has been already encrypted
     try {
       const res = await axios.post(`${server}/user/login`, {
         email: this.state.email.toLowerCase(),
         password: this.state.password
       });
 
-      // Stores the user token
+      // Store the user token
       axios.defaults.headers.common["Authorization"] = res.data.token;
-      // Stores the user info (email, name)
+      // Store the user info (email, name)
       AsyncStorage.setItem("userData", JSON.stringify(res.data));
-      // Navigates home
+      // Navigate home
       this.props.navigation.navigate("Home", res.data);
     } catch (err) {
       // Login failed
@@ -54,7 +54,7 @@ export default class Auth extends Component {
 
   // Signup method
   signup = async () => {
-    // Registers the user
+    // Register the user
     try {
       await axios.post(`${server}/user/register`, {
         name: this.state.name,
@@ -71,7 +71,7 @@ export default class Auth extends Component {
     }
   };
 
-  // Checks which page to render
+  // Check which page to render
   signinOrSignup = () => {
     if (this.state.stageNew) {
       this.signup();
@@ -81,7 +81,7 @@ export default class Auth extends Component {
   };
 
   render() {
-    // Validates both the login and the register data
+    // Validate both the login and the register data
     const validations = [];
 
     validations.push(this.state.email && this.state.email.includes("@"));

@@ -15,7 +15,7 @@ import commonStyles from "../../commonStyles";
 
 // Food component
 export default props => {
-  // Checks if food isn't being filtered
+  // Check if food isn't being filtered
   if (props.visible == false) {
     return false;
   } else {

@@ -1,5 +1,7 @@
 class Usuario < ApplicationRecord
+  # Transform the email into lowercase prior to saving it
   before_save { self.email = email.downcase }
+  # Validation
   validates :nome, presence: true, uniqueness: { case_sensitive: false }, 
             length: { minimum: 3, maximum: 25 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

@@ -29,7 +29,7 @@ import {
 } from "../../common";
 
 export default class ViewSite extends Component {
-  // Initializes the state with the data coming from the last screen
+  // Initialize the state with the data coming from the last screen
   initialState = {
     site: this.props.navigation.getParam("site"),
     loadTime: this.props.navigation.getParam("loadTime") || "0",
@@ -50,14 +50,14 @@ export default class ViewSite extends Component {
     // the perfomance measure event, otherwise it only displays
     // the data that's already there
     this.state.score == 0 && this.loadSite();
-    // Handles the back key press
+    // Handle the back key press
     this.backHandler = BackHandler.addEventListener("hardwareBackPress", () => {
       this.props.navigation.navigate("App");
       return true;
     });
   }
 
-  // Saves the data fetched to the local storage
+  // Save the data fetched to the local storage
   saveToStorage = async () => {
     try {
       // Find the place data needs to be saved
@@ -89,7 +89,7 @@ export default class ViewSite extends Component {
           }
         });
 
-        // Pushes the data to the storage
+        // Push the data to the storage
         await AsyncStorage.setItem("sites", JSON.stringify(sites));
       }
     } catch (e) {
@@ -103,7 +103,7 @@ export default class ViewSite extends Component {
 
   // Load website method
   loadSite = async () => {
-    // Checks if the phone has a working internet connection
+    // Check if the phone has a working internet connection
     await NetInfo.getConnectionInfo().then(connectionInfo => {
       this.setState({
         connected: connectionInfo.type != "none" ? true : false
@@ -113,7 +113,7 @@ export default class ViewSite extends Component {
     if (this.state.connected == false) {
       showError("Your phone doesn't seem to be connected to the internet");
     } else {
-      // Triggers the device refreshing page
+      // Trigger the device refreshing page
       this.setState({ refreshing: true });
       let statusCode = 100;
 
@@ -130,7 +130,7 @@ export default class ViewSite extends Component {
       let url = json.data.jsonUrl;
 
 
-      // Awaits the API call end
+      // Await the API call end
       while (statusCode < 199) {
         // Once the API call ends, fetch the data
         const newResponse = await fetch(url);
@@ -139,9 +139,9 @@ export default class ViewSite extends Component {
         statusCode = newJson.statusCode;
 
 
-        // Tests for success
+        // Test for success
         if (statusCode == 200) {
-          // Prepares the state update
+          // Prepare the state update
           newState = {
             site: this.state.site,
             loadTime: newJson.data.median.firstView.fullyLoaded,
@@ -149,9 +149,9 @@ export default class ViewSite extends Component {
             startRender: newJson.data.median.firstView.firstImagePaint,
             requests: newJson.data.median.firstView.requestsFull,
             bytesIn: newJson.data.median.firstView.bytesIn,
-            // Calculates the CDN score
+            // Calculate the CDN score
             cdnSystem: getCdnLevel(newJson.data.median.firstView.score_cdn),
-            // Calculates the overall score
+            // Calculate the overall score
             score: getScore(
               newJson.data.median.firstView.fullyLoaded,
               newJson.data.median.firstView.requests[1].download_start,

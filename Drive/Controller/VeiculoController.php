@@ -16,10 +16,13 @@ class VeiculoController extends Controller
      */
     public function index(Veiculo $veiculo)
     {           
+        // Get the vehicle
         $veiculos = $veiculo->get();
+        
+        // Parse to JSON
         $veiculosJson = Veiculo::all()->toJson();       
         
-
+        // Render the view index
         return view('veiculo.index', ['todosVeiculos' => $veiculos, 'veiculosJson' => $veiculosJson]);
     }
     /**
@@ -29,6 +32,7 @@ class VeiculoController extends Controller
      */
     public function create()
     {
+        // Render the view create
         return view('veiculo.create');
     }
     /**
@@ -40,6 +44,7 @@ class VeiculoController extends Controller
     public function store(Request $request)
     {
          
+        // Validate the data
         $this->validate($request, [
             'id_cliente' => 'required',
             'marca' => 'required',
@@ -48,6 +53,7 @@ class VeiculoController extends Controller
             'placa' => 'required',
         ]);
         
+        // Create a new vehicle
         $veiculo = new Veiculo;
         $veiculo->id_cliente = $request->id_cliente;
         $veiculo->marca = $request->marca;
@@ -55,8 +61,10 @@ class VeiculoController extends Controller
         $veiculo->ano = $request->ano;
         $veiculo->placa = $request->placa;
         
+        // Save vehicle
         $veiculo->save();
 
+        // Redirect to the view index
         return redirect('veiculos')->with('message', 'Veiculo adicionado com sucesso!');
         
     }
@@ -68,10 +76,15 @@ class VeiculoController extends Controller
      */
     public function show($id)
     {
+        // Find vehicle
         $veiculos = Veiculo::find($id);
+        
+        // Abort if no vehicle is found
         if(!$veiculos){
             abort(404);
         }
+
+        // Render the view details
         return view('veiculos.details')->with('detailpage', $veiculos);        
     }
     /**
@@ -82,10 +95,14 @@ class VeiculoController extends Controller
      */
     public function edit($id)
     {
+        // Find vehicle
         $veiculo = Veiculo::find($id);
+
+        // Abort if no vehicle is found
         if(!$veiculo){
             abort(404);
         }
+        // Render the view edit
         return view('veiculo.edit')->with('detailpage', $veiculo);
     }
     /**
@@ -96,7 +113,8 @@ class VeiculoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   
+        // Validate the data
         $this->validate($request, [
             'id_cliente' => 'required',
             'marca' => 'required',
@@ -105,6 +123,7 @@ class VeiculoController extends Controller
             'placa' => 'required',
         ]);
         
+        // FInd the vehicle to be updated
         $veiculo = Veiculo::find($id);
         $veiculo->id_cliente = $request->id_cliente;
         $veiculo->marca = $request->marca;
@@ -112,9 +131,10 @@ class VeiculoController extends Controller
         $veiculo->ano = $request->ano;
         $veiculo->placa = $request->placa;
 
-        
+        // Update vehicle
         $veiculo->save();
 
+        // redirect to the view index
         return redirect('veiculos')->with('message', 'Veiculo atualizado com sucesso!');
     }
     /**
@@ -125,8 +145,13 @@ class VeiculoController extends Controller
      */
     public function destroy($id)
     {
+        // Find vehicle
         $veiculo = Veiculo::find($id);
+        
+        // Delete vehicle
         $veiculo->delete();
+        
+        // redirect to the view index
         return redirect('veiculos')->with('message', 'Veiculo apagado com sucesso!');
     }
 }

@@ -36,7 +36,7 @@ export default class CategoriesSelection extends Component {
     this.state = this.getInitialState();
   }
 
-  // Initializes the state
+  // Initialize the state
   getInitialState = () => {
     categories.sort();
     return {
@@ -51,7 +51,7 @@ export default class CategoriesSelection extends Component {
   };
 
 
-  // Allows multi selection
+  // Allow multi selection
   multiSelect = () => {
     this.state.selection.length > 0
       ? this.setState({ selection: [], selectionText: "Select all" })
@@ -66,7 +66,7 @@ export default class CategoriesSelection extends Component {
     var index = this.state.selection.indexOf(category);
     newSelection = this.state.selection;
 
-    // Adds or removes the item from the selection
+    // Add or removes the item from the selection
     // list depending on if it's already there or not
     if (index > -1) {
       newSelection.splice(index, 1);
@@ -74,12 +74,12 @@ export default class CategoriesSelection extends Component {
       newSelection.push(category);
     }
 
-    // Treats the right text to render
+    // Treat the right text to render
     this.state.selection.length > 0
       ? (selectionText = "Clear")
       : (selectionText = "Select all");
 
-    // Updates the state
+    // Update the state
     this.setState({ selection: newSelection, selectionText: selectionText });
   };
 

@@ -17,7 +17,7 @@ export default class AddSite extends Component {
     this.state = this.getInitialState();
   }
 
-  // Initializes the state
+  // Initialize the state
   getInitialState = () => {
     return {
       site: ""
@@ -26,7 +26,7 @@ export default class AddSite extends Component {
 
   // Save method
   save = () => {
-    // Validates to check if the input corresponds to a website
+    // Validate to check if the input corresponds to a website
     if (
       !this.state.site.trim() ||
       !/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(

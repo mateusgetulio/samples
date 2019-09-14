@@ -12,14 +12,14 @@ History.meth;
 ***/
 router.get(
   "/",
-  // Athenticates the token sent
+  // Athenticate the token sent
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    // Finds the history based on the authenticated user
+    // Find the history based on the authenticated user
     History.find({ user: req.user.email })
       // Sort based on the date
       .sort({ date: -1 })
-      // Returns the data found
+      // Return the data found
       .then(history => res.json(history))
       // Error treatment
       .catch(err =>
@@ -48,7 +48,7 @@ router.get(
     })
       // Sort based on the date
       .sort({ date: -1 })
-      // Returns the data found
+      // Return the data found
       .then(history => res.json(history))
       // Error treatment
       .catch(err =>
@@ -76,7 +76,7 @@ router.get(
     })
       // Sort based on the date
       .sort({ date: -1 })
-      // Returns the data found
+      // Return the data found
       .then(history => res.json(history))
       // Error treatment
       .catch(err =>
@@ -100,7 +100,7 @@ router.get(
     History.find({ user: req.user.email })
       // Sort based on the date
       .sort({ date: -1 })
-      // Returns the data found
+      // Return the data found
       .then(history => {
         let years = [];        
         history.forEach(el => {
@@ -137,7 +137,7 @@ router.get(
     History.find({ user: req.user.email })
       // Sort based on the date
       .sort({ date: -1 })
-      // Returns the data found
+      // Return the data found
       .then(history => {
         let months = [];
 
@@ -170,7 +170,7 @@ router.get(
 router.get("/:date", (req, res) => {
   // Find the history based on the authenticated user
   History.find({ date: req.params.date })
-    // Returns the data found
+    // Return the data found
     .then(history => res.json(history))
     // Error treatment
     .catch(err =>
@@ -191,7 +191,7 @@ router.post(
   (req, res) => {
     // Find the history based on the authenticated user
     History.findOne({ date: req.params.date })
-      // Returns the updated data
+      // Return the updated data
       .then(history => {
         history.totalCalories = req.body.totalCalories;
 
@@ -200,7 +200,7 @@ router.post(
         // Fix quota incompatibilities
         parsedFoods = eval(req.body.foods.replace(/\"/g, "'"));
 
-        // Prepares the data that needs to be updated
+        // Prepare the data that needs to be updated
         parsedFoods.forEach(el => {
           history.foods.push({
             name: el.name,
@@ -211,7 +211,7 @@ router.post(
 
         // Save the data to the DB
         history.save()
-        // Returns the updated data
+        // Return the updated data
         .then(history => res.json(history));
       })
       // Error treatment
@@ -244,7 +244,7 @@ router.post(
       ? (parsedFoods = eval(req.body.foods.replace(/\"/g, "'")))
       : (parsedFoods = req.body.foods);
 
-    // Prepares the data that needs to be updated
+    // Prepare the data that needs to be updated
     parsedFoods.forEach(el => {
       newHistory.foods.push({
         name: el.name,
@@ -255,7 +255,7 @@ router.post(
 
     // Save the data to the DB
     newHistory.save().
-    // Returns the saved data
+    // Return the saved data
     then(history => res.json(history));
   }
 );

@@ -35,10 +35,10 @@ const MenuConfig = {
   }
 };
 
-// Creates the navigator
+// Create the navigator
 const MenuNavigator = createDrawerNavigator(MenuRoutes, MenuConfig);
 
-// Registers the routes
+// Register the routes
 const MainRoutes = {
   Loading: {
     name: "Loading",

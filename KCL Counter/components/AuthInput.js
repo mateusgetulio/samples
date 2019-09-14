@@ -4,7 +4,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 export default props => {
   
-  // Returns the auth component
+  // Return the auth component
   return (
     <View style={[styles.container, props.style]}>
       <Icon name={props.icon} size={20} style={styles.icon} />
