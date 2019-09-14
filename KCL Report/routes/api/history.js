@@ -57,6 +57,7 @@ router.get(
   }
 );
 
+
 /*** 
   Method: GET
   Restricted: Yes
@@ -83,6 +84,7 @@ router.get(
       );
   }
 );
+
 
 /*** 
   Method: GET
@@ -119,6 +121,7 @@ router.get(
       );
   }
 );
+
 
 /*** 
   Method: GET
@@ -157,6 +160,7 @@ router.get(
   }
 );
 
+
 /*** 
   Method: GET
   Restricted: Yes  
@@ -173,6 +177,7 @@ router.get("/:date", (req, res) => {
       res.status(404).json({ errorMessage: "An error ocurred: " + err })
     );
 });
+
 
 /*** 
   Method: POST
@@ -215,6 +220,7 @@ router.post(
       );
   }
 );
+
 
 /*** 
   Method: GET
